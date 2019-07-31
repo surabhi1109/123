@@ -1,0 +1,13 @@
+steps:
+
+- name: node:10.15.1
+  entrypoint: npm
+  args: ['version','patch'] # please mention major/minor/patch
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "hiiiiiiiiiiiiiiiiiii"
+    echo "this is insert folder"
