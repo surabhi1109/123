@@ -5,23 +5,6 @@ steps:
   args:
   - '-c'
   - |
-    for d in */; do 
-      config="${d}cloudbuild.yaml"
-      if [[ ! -f "${config}" ]]; then
-        for ff in $d/*; do
-        config1="${ff}/cloudbuild.yaml"
-        if [[ ! -f "${config1}" ]]; then
-        continue
-        fi
-        echo "Building $ff ... "
-      (
-        gcloud builds submit $ff --config=${config1}
-      ) &
-        done
-      fi
-      echo "Building $d ... "
-      (
-        gcloud builds submit $d --config=${config}
-      ) &
+    find */ -type f -name cloudbuild* -print0 | while read -d $'\0' file; do
+    gcloud builds submit --config=$file
     done
-    wait
