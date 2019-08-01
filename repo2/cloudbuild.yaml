@@ -3,6 +3,7 @@ steps:
 - name: node:10.15.1
   entrypoint: npm
   args: ['version','patch'] # please mention major/minor/patch
+  dir: 'repo2'
 
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
@@ -11,3 +12,4 @@ steps:
   - |
     echo "hiiiiiiiiiiiiiiiiiii"
     echo "this is repo2222222222222 folder"
+  dir: 'repo2'
